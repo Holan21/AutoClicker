@@ -35,8 +35,8 @@
             this.InfinityCheckBox = new System.Windows.Forms.CheckBox();
             this.KeyLabel = new System.Windows.Forms.Label();
             this.KeyTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.KeyWillPressLabel = new System.Windows.Forms.Label();
+            this.KeyWillPressTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // DelayLabel
@@ -105,31 +105,31 @@
             this.KeyTextBox.TabIndex = 6;
             this.KeyTextBox.UseWaitCursor = true;
             // 
-            // label1
+            // KeyWillPressLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Key(will be press):";
-            this.label1.UseWaitCursor = true;
+            this.KeyWillPressLabel.AutoSize = true;
+            this.KeyWillPressLabel.Location = new System.Drawing.Point(12, 83);
+            this.KeyWillPressLabel.Name = "KeyWillPressLabel";
+            this.KeyWillPressLabel.Size = new System.Drawing.Size(101, 15);
+            this.KeyWillPressLabel.TabIndex = 7;
+            this.KeyWillPressLabel.Text = "Key(will be press):";
+            this.KeyWillPressLabel.UseWaitCursor = true;
             // 
-            // textBox1
+            // KeyWillPressTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(119, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.UseWaitCursor = true;
+            this.KeyWillPressTextBox.Location = new System.Drawing.Point(119, 80);
+            this.KeyWillPressTextBox.Name = "KeyWillPressTextBox";
+            this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 23);
+            this.KeyWillPressTextBox.TabIndex = 8;
+            this.KeyWillPressTextBox.UseWaitCursor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.KeyWillPressTextBox);
+            this.Controls.Add(this.KeyWillPressLabel);
             this.Controls.Add(this.KeyTextBox);
             this.Controls.Add(this.KeyLabel);
             this.Controls.Add(this.InfinityCheckBox);
@@ -154,7 +154,7 @@
         private CheckBox InfinityCheckBox;
         private Label KeyLabel;
         private TextBox KeyTextBox;
-        private Label label1;
-        private TextBox textBox1;
+        private Label KeyWillPressLabel;
+        private TextBox KeyWillPressTextBox;
     }
 }
