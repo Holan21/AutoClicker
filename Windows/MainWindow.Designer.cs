@@ -42,86 +42,107 @@
             // DelayLabel
             // 
             this.DelayLabel.AutoSize = true;
-            this.DelayLabel.Location = new System.Drawing.Point(12, 34);
+            this.DelayLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DelayLabel.Location = new System.Drawing.Point(12, 45);
             this.DelayLabel.Name = "DelayLabel";
-            this.DelayLabel.Size = new System.Drawing.Size(39, 15);
+            this.DelayLabel.Size = new System.Drawing.Size(63, 25);
             this.DelayLabel.TabIndex = 0;
             this.DelayLabel.Text = "Delay:";
-            this.DelayLabel.UseWaitCursor = true;
             // 
             // DelayTextBox
             // 
-            this.DelayTextBox.Location = new System.Drawing.Point(119, 31);
+            this.DelayTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DelayTextBox.Location = new System.Drawing.Point(180, 42);
             this.DelayTextBox.Name = "DelayTextBox";
             this.DelayTextBox.PlaceholderText = "ms";
-            this.DelayTextBox.Size = new System.Drawing.Size(100, 23);
-            this.DelayTextBox.TabIndex = 1;
-            this.DelayTextBox.UseWaitCursor = true;
+            this.DelayTextBox.Size = new System.Drawing.Size(100, 33);
+            this.DelayTextBox.TabIndex = 3;
+            this.DelayTextBox.TabStop = false;
+            this.DelayTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
             // 
             // AmountClicksLablel
             // 
             this.AmountClicksLablel.AutoSize = true;
+            this.AmountClicksLablel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.AmountClicksLablel.Location = new System.Drawing.Point(12, 9);
             this.AmountClicksLablel.Name = "AmountClicksLablel";
-            this.AmountClicksLablel.Size = new System.Drawing.Size(86, 15);
+            this.AmountClicksLablel.Size = new System.Drawing.Size(133, 25);
             this.AmountClicksLablel.TabIndex = 2;
             this.AmountClicksLablel.Text = "Amount clicks:";
-            this.AmountClicksLablel.UseWaitCursor = true;
             // 
             // AmountTextBox
             // 
-            this.AmountTextBox.Location = new System.Drawing.Point(119, 6);
+            this.AmountTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AmountTextBox.Location = new System.Drawing.Point(180, 3);
             this.AmountTextBox.Name = "AmountTextBox";
-            this.AmountTextBox.Size = new System.Drawing.Size(100, 23);
-            this.AmountTextBox.TabIndex = 3;
-            this.AmountTextBox.UseWaitCursor = true;
+            this.AmountTextBox.Size = new System.Drawing.Size(100, 33);
+            this.AmountTextBox.TabIndex = 1;
+            this.AmountTextBox.TabStop = false;
+            this.AmountTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
             // 
             // InfinityCheckBox
             // 
             this.InfinityCheckBox.AutoSize = true;
-            this.InfinityCheckBox.Location = new System.Drawing.Point(225, 8);
+            this.InfinityCheckBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.InfinityCheckBox.Location = new System.Drawing.Point(286, 5);
             this.InfinityCheckBox.Name = "InfinityCheckBox";
-            this.InfinityCheckBox.Size = new System.Drawing.Size(63, 19);
-            this.InfinityCheckBox.TabIndex = 4;
+            this.InfinityCheckBox.Size = new System.Drawing.Size(89, 29);
+            this.InfinityCheckBox.TabIndex = 2;
+            this.InfinityCheckBox.TabStop = false;
             this.InfinityCheckBox.Text = "Infinity";
             this.InfinityCheckBox.UseVisualStyleBackColor = true;
-            this.InfinityCheckBox.UseWaitCursor = true;
             // 
             // KeyLabel
             // 
             this.KeyLabel.AutoSize = true;
-            this.KeyLabel.Location = new System.Drawing.Point(12, 58);
+            this.KeyLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.KeyLabel.Location = new System.Drawing.Point(12, 84);
             this.KeyLabel.Name = "KeyLabel";
-            this.KeyLabel.Size = new System.Drawing.Size(78, 15);
+            this.KeyLabel.Size = new System.Drawing.Size(124, 25);
             this.KeyLabel.TabIndex = 5;
             this.KeyLabel.Text = "Key(for start):";
-            this.KeyLabel.UseWaitCursor = true;
             // 
             // KeyTextBox
             // 
-            this.KeyTextBox.Location = new System.Drawing.Point(119, 55);
+            this.KeyTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.KeyTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.KeyTextBox.Location = new System.Drawing.Point(180, 81);
+            this.KeyTextBox.MaxLength = 1;
             this.KeyTextBox.Name = "KeyTextBox";
-            this.KeyTextBox.Size = new System.Drawing.Size(100, 23);
-            this.KeyTextBox.TabIndex = 6;
-            this.KeyTextBox.UseWaitCursor = true;
+            this.KeyTextBox.Size = new System.Drawing.Size(100, 33);
+            this.KeyTextBox.TabIndex = 4;
+            this.KeyTextBox.TabStop = false;
+            this.KeyTextBox.Text = "Z";
+            this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
+            this.KeyTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
+            this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Key_UpTextBox);
             // 
             // KeyWillPressLabel
             // 
             this.KeyWillPressLabel.AutoSize = true;
-            this.KeyWillPressLabel.Location = new System.Drawing.Point(12, 83);
+            this.KeyWillPressLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.KeyWillPressLabel.Location = new System.Drawing.Point(12, 123);
             this.KeyWillPressLabel.Name = "KeyWillPressLabel";
-            this.KeyWillPressLabel.Size = new System.Drawing.Size(101, 15);
+            this.KeyWillPressLabel.Size = new System.Drawing.Size(162, 25);
             this.KeyWillPressLabel.TabIndex = 7;
             this.KeyWillPressLabel.Text = "Key(will be press):";
-            this.KeyWillPressLabel.UseWaitCursor = true;
             // 
             // KeyWillPressTextBox
             // 
-            this.KeyWillPressTextBox.Location = new System.Drawing.Point(119, 80);
+            this.KeyWillPressTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.KeyWillPressTextBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.KeyWillPressTextBox.Location = new System.Drawing.Point(180, 120);
+            this.KeyWillPressTextBox.MaxLength = 1;
             this.KeyWillPressTextBox.Name = "KeyWillPressTextBox";
-            this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 23);
-            this.KeyWillPressTextBox.TabIndex = 8;
-            this.KeyWillPressTextBox.UseWaitCursor = true;
+            this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 33);
+            this.KeyWillPressTextBox.TabIndex = 5;
+            this.KeyWillPressTextBox.TabStop = false;
+            this.KeyWillPressTextBox.Text = "E";
+            this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
+            this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
+            this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Key_UpTextBox);
             // 
             // MainWindow
             // 
@@ -139,7 +160,6 @@
             this.Controls.Add(this.DelayLabel);
             this.Name = "MainWindow";
             this.Text = "Auto-Clicker";
-            this.UseWaitCursor = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
