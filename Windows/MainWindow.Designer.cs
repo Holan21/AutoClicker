@@ -1,6 +1,6 @@
-﻿namespace AutoClicker
+﻿namespace AutoClicker.Windows
 {
-    partial class MainWindow
+    partial class MainWindow : Form
     {
         /// <summary>
         ///  Required designer variable.
@@ -104,7 +104,6 @@
             this.KeyTextBox.Size = new System.Drawing.Size(100, 23);
             this.KeyTextBox.TabIndex = 6;
             this.KeyTextBox.UseWaitCursor = true;
-            this.KeyTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyDown);
             // 
             // label1
             // 
@@ -141,7 +140,6 @@
             this.Name = "MainWindow";
             this.Text = "Auto-Clicker";
             this.UseWaitCursor = true;
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

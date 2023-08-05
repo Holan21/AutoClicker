@@ -1,8 +1,9 @@
+using AutoClicker.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 namespace AutoClicker
 {
+
     internal static class Program
     {
         [STAThread]
