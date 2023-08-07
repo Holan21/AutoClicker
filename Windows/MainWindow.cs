@@ -1,20 +1,30 @@
 using System.Text.RegularExpressions;
+using WindowsInput.Native;
 
 namespace AutoClicker.Windows
 
 {
     public partial class MainWindow : Form
     {
-
+        private VirtualKeyCode _keyStart;
+        private VirtualKeyCode _keyWillPress;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Key_UpTextBox(object sender, KeyEventArgs e)
+        private void KeyWillPressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             e.Handled = true;
             ((TextBox)sender).Text = e.KeyCode.ToString();
+            _keyWillPress = (VirtualKeyCode)e.KeyValue;
+        }
+
+        private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
+        {
+            e.Handled = true;
+            ((TextBox)sender).Text = e.KeyCode.ToString();
+            _keyStart = (VirtualKeyCode)e.KeyValue;
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
@@ -32,5 +42,7 @@ namespace AutoClicker.Windows
                 box.Clear();
             }
         }
+
+
     }
 }

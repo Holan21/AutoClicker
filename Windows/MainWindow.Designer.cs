@@ -115,8 +115,8 @@
             this.KeyTextBox.Text = "Z";
             this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Key_UpTextBox);
+            this.KeyTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
+            this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyUp);
             // 
             // KeyWillPressLabel
             // 
@@ -142,7 +142,7 @@
             this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Key_UpTextBox);
+            this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyWillPressTextBox_KeyUp);
             // 
             // MainWindow
             // 
