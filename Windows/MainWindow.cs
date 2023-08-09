@@ -1,4 +1,4 @@
-using GlobalHandle;
+using Gma.System.MouseKeyHook;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using WindowsInput.Native;
@@ -7,25 +7,24 @@ namespace AutoClicker.Windows
 {
     public partial class MainWindow : Form
     {
-        private GlobalKeyboardHook _keyboardHandle;
-        private VirtualKeyCode _keyStart = VirtualKeyCode.VK_Z;
-        private VirtualKeyCode _keyWillPress = VirtualKeyCode.LBUTTON;
+        private int _keyStart = (int)VirtualKeyCode.VK_Z;
+        private int _keyWillPress = (int)VirtualKeyCode.LBUTTON;
+
+        private IKeyboardMouseEvents m_GlobalHook;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void KeyWillPressTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void KeyUp(object sender, KeyEventArgs e)
         {
             ((TextBox)sender).Text = e.KeyCode.ToString();
-            _keyWillPress = (VirtualKeyCode)e.KeyValue;
+            _keyStart = (int)e.KeyValue;
         }
-
-        private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
+        private void MouseUp(object sender, MouseEventArgs e)
         {
-            ((TextBox)sender).Text = e.KeyCode.ToString();
-            _keyStart = (VirtualKeyCode)e.KeyValue;
-            GlobalKeyboardHook.PressedButton = e.KeyValue;
+            KeyTextBox.Text = e.Button.ToString();
+            _keyStart = (int)e.Button;
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
@@ -46,20 +45,29 @@ namespace AutoClicker.Windows
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            _keyboardHandle = new GlobalKeyboardHook();
-            _keyboardHandle.KeyboardPressed += _keyboardHandle_KeyboardPressed;
+            m_GlobalHook = Hook.GlobalEvents();
+
+            m_GlobalHook.KeyDown += M_GlobalHook_KeyDown;
+            m_GlobalHook.MouseDown += M_GlobalHook_MouseDown;
         }
 
-        private void _keyboardHandle_KeyboardPressed(object? sender, GlobalKeyboardHookEventArgs e)
+        private void M_GlobalHook_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (e.KeyboardData.VirtualCode == GlobalKeyboardHook.PressedButton
-                && e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown
-                && KeyWillPressTextBox.Focused != true
-                && KeyTextBox.Focused != true
-                && DelayTextBox.Focused != true
-                && AmountTextBox.Focused != true)
-                Debug.WriteLine("Pressed " + (VirtualKeyCode)GlobalKeyboardHook.PressedButton);
+            if (e.KeyValue == _keyStart)
+                DoStart();
         }
-    }
+        private void M_GlobalHook_MouseDown(object? sender, MouseEventArgs e)
+        {
+            if ((int)e.Button == _keyStart)
+                DoStart();
 
+        }
+
+        private void DoStart()
+        {
+            Debug.WriteLine("Start");
+        }
+
+
+    }
 }
