@@ -10,10 +10,31 @@ namespace AutoClicker.Windows
         private int _keyStart = (int)VirtualKeyCode.VK_Z;
         private int _keyWillPress = (int)VirtualKeyCode.LBUTTON;
 
-        private IKeyboardMouseEvents m_GlobalHook;
+        private readonly IKeyboardMouseEvents m_GlobalHook;
         public MainWindow()
         {
             InitializeComponent();
+
+            m_GlobalHook = Hook.GlobalEvents();
+
+            m_GlobalHook.KeyDown += M_GlobalHook_KeyDown;
+            m_GlobalHook.MouseDown += M_GlobalHook_MouseDown;
+        }
+
+        private void M_GlobalHook_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == _keyStart)
+                DoStart();
+        }
+        private void M_GlobalHook_MouseDown(object? sender, MouseEventArgs e)
+        {
+            if ((int)e.Button == _keyStart)
+                DoStart();
+        }
+
+        private void DoStart()
+        {
+            Debug.WriteLine("Start");
         }
 
         private void KeyUp(object sender, KeyEventArgs e)
@@ -43,30 +64,8 @@ namespace AutoClicker.Windows
             }
         }
 
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            m_GlobalHook = Hook.GlobalEvents();
 
-            m_GlobalHook.KeyDown += M_GlobalHook_KeyDown;
-            m_GlobalHook.MouseDown += M_GlobalHook_MouseDown;
-        }
 
-        private void M_GlobalHook_KeyDown(object? sender, KeyEventArgs e)
-        {
-            if (e.KeyValue == _keyStart)
-                DoStart();
-        }
-        private void M_GlobalHook_MouseDown(object? sender, MouseEventArgs e)
-        {
-            if ((int)e.Button == _keyStart)
-                DoStart();
-
-        }
-
-        private void DoStart()
-        {
-            Debug.WriteLine("Start");
-        }
 
 
     }

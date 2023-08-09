@@ -139,7 +139,7 @@
             this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyWillPressTextBox.TabIndex = 5;
             this.KeyWillPressTextBox.TabStop = false;
-            this.KeyWillPressTextBox.Text = "E";
+            this.KeyWillPressTextBox.Text = "LBUTTON";
             this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
@@ -161,8 +161,7 @@
             this.Controls.Add(this.DelayTextBox);
             this.Controls.Add(this.DelayLabel);
             this.Name = "MainWindow";
-            this.Text = "zzzz";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Text = "Auto-Clicker";
             this.ResumeLayout(false);
             this.PerformLayout();
 

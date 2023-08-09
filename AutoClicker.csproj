@@ -20,8 +20,4 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GlobalLowLevelHooks\GlobalLowLevelHooks.csproj" />
-  </ItemGroup>
-
 </Project>
