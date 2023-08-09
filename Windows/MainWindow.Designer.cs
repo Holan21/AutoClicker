@@ -115,7 +115,7 @@
             this.KeyTextBox.Text = "Z";
             this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
+            this.KeyTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
             this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyUp);
             // 
             // KeyWillPressLabel
@@ -149,6 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.KeyWillPressTextBox);
             this.Controls.Add(this.KeyWillPressLabel);
             this.Controls.Add(this.KeyTextBox);
@@ -160,6 +161,7 @@
             this.Controls.Add(this.DelayLabel);
             this.Name = "MainWindow";
             this.Text = "Auto-Clicker";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

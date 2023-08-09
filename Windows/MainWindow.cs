@@ -1,13 +1,15 @@
+using GlobalHandle;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using WindowsInput.Native;
-
 namespace AutoClicker.Windows
 
 {
     public partial class MainWindow : Form
     {
-        private VirtualKeyCode _keyStart;
-        private VirtualKeyCode _keyWillPress;
+        private GlobalKeyboardHook _keyboardHandle;
+        private VirtualKeyCode _keyStart = VirtualKeyCode.VK_Z;
+        private VirtualKeyCode _keyWillPress = VirtualKeyCode.LBUTTON;
         public MainWindow()
         {
             InitializeComponent();
@@ -15,16 +17,15 @@ namespace AutoClicker.Windows
 
         private void KeyWillPressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            e.Handled = true;
             ((TextBox)sender).Text = e.KeyCode.ToString();
             _keyWillPress = (VirtualKeyCode)e.KeyValue;
         }
 
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            e.Handled = true;
             ((TextBox)sender).Text = e.KeyCode.ToString();
             _keyStart = (VirtualKeyCode)e.KeyValue;
+            GlobalKeyboardHook.PressedButton = e.KeyValue;
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
@@ -43,6 +44,22 @@ namespace AutoClicker.Windows
             }
         }
 
+        private void MainWindow_Load(object sender, EventArgs e)
+        {
+            _keyboardHandle = new GlobalKeyboardHook();
+            _keyboardHandle.KeyboardPressed += _keyboardHandle_KeyboardPressed;
+        }
 
+        private void _keyboardHandle_KeyboardPressed(object? sender, GlobalKeyboardHookEventArgs e)
+        {
+            if (e.KeyboardData.VirtualCode == GlobalKeyboardHook.PressedButton
+                && e.KeyboardState == GlobalKeyboardHook.KeyboardState.KeyDown
+                && KeyWillPressTextBox.Focused != true
+                && KeyTextBox.Focused != true
+                && DelayTextBox.Focused != true
+                && AmountTextBox.Focused != true)
+                Debug.WriteLine("Pressed " + (VirtualKeyCode)GlobalKeyboardHook.PressedButton);
+        }
     }
+
 }
