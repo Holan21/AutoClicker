@@ -1,18 +1,18 @@
+using AutoClicker.Enums;
 using AutoClicker.Services.Clicker;
 using Gma.System.MouseKeyHook;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using WindowsInput.Native;
 namespace AutoClicker.Windows
 
 {
     public partial class MainWindow : Form
     {
-        private int keyStart = (int)VirtualKeyCode.VK_Z;
-        private int keyWillPress = (int)MouseButtons.Left;
+        private int keyStart = (int)KeysAndMouseButtons.Z;
+        private int keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
         private int amoutClicks = 100000;
-        private int delay = 100; // in ms
+        private int delay = 100; // in msz
         private bool _infinnityClicks = true;
 
 
@@ -29,8 +29,8 @@ namespace AutoClicker.Windows
 
             _clicker = clicker;
 
-            KeyTextBox.Text = keyStart.ToString();
-            KeyWillPressTextBox.Text = keyWillPress.ToString();
+            KeyTextBox.Text = ((KeysAndMouseButtons)keyStart).ToString();
+            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)keyWillPress).ToString();
             AmountTextBox.Text = amoutClicks.ToString();
             DelayTextBox.Text = delay.ToString();
             InfinityCheckBox.Checked = _infinnityClicks;
@@ -88,23 +88,23 @@ namespace AutoClicker.Windows
 
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            KeyTextBox.Text = e.KeyCode.ToString();
+            KeyTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
             keyStart = (int)e.KeyValue;
         }
         private void KeyTextBox_MouseUp(object sender, MouseEventArgs e)
         {
-            KeyTextBox.Text = e.Button.ToString();
+            KeyTextBox.Text = ((KeysAndMouseButtons)e.Button).ToString();
             keyStart = (int)e.Button;
         }
 
         private void KeyWillBePressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            KeyWillPressTextBox.Text = e.KeyCode.ToString();
+            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
             keyWillPress = (int)e.KeyValue;
         }
         private void KeyWillBePressTextBox_MouseUp(object sender, MouseEventArgs e)
         {
-            KeyWillPressTextBox.Text = e.Button.ToString();
+            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)e.Button).ToString();
             keyWillPress = (int)e.Button;
         }
 
