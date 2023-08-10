@@ -178,5 +178,9 @@ namespace AutoClicker.Windows
         [DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr hWnd);
 
+        private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
+        }
     }
 }

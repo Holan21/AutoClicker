@@ -15,5 +15,9 @@ namespace AutoClicker.Models.Config
         public int delayMs { get; set; } = 100;
         [JsonPropertyName("infinnityClicks")]
         public bool infinnityClicks { get; set; } = true;
+        [JsonPropertyName("linkRepo")]
+        public string LinkRepo { get; set; } = "https://github.com/Holan21/AutoClicker";
+        [JsonPropertyName("linkCreator")]
+        public string LinkCreator { get; set; } = "https://github.com/Holan21";
     }
 }

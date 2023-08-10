@@ -41,6 +41,7 @@
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
+            this.LinkLabelRepo = new System.Windows.Forms.LinkLabel();
             this.StatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,11 +191,26 @@
             this.HintTextBox.Text = "To stop\r\njust press\r\n\"Target-Key\"\r\n    Again!";
             this.HintTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // LinkLabelRepo
+            // 
+            this.LinkLabelRepo.AutoSize = true;
+            this.LinkLabelRepo.Font = new System.Drawing.Font("Segoe UI", 36F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.LinkLabelRepo.LinkColor = System.Drawing.Color.Black;
+            this.LinkLabelRepo.Location = new System.Drawing.Point(23, 9);
+            this.LinkLabelRepo.Name = "LinkLabelRepo";
+            this.LinkLabelRepo.Size = new System.Drawing.Size(309, 65);
+            this.LinkLabelRepo.TabIndex = 11;
+            this.LinkLabelRepo.TabStop = true;
+            this.LinkLabelRepo.Text = "Auto-Clicker";
+            this.LinkLabelRepo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelRepo_LinkClicked);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.LinkLabelRepo);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.label1);
@@ -233,5 +249,6 @@
         private StatusStrip StatusBar;
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;
+        private LinkLabel LinkLabelRepo;
     }
 }
