@@ -101,7 +101,7 @@ namespace AutoClicker.Windows
             Process pr = Process.GetCurrentProcess();
             if (Focused && _startClickerThread)
             {
-                SetForegroundWindow(pr.MainWindowHandle);
+                WindowState = FormWindowState.Minimized;
                 StatusBarLabel.Text = "Process is going";
             }
             else if (!Focused && !_startClickerThread)
