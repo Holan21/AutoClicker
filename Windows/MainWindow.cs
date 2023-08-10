@@ -1,5 +1,7 @@
 using AutoClicker.Enums;
+using AutoClicker.Models.Config;
 using AutoClicker.Services.Clicker;
+using AutoClicker.Services.ConfigController;
 using Gma.System.MouseKeyHook;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -10,13 +12,9 @@ namespace AutoClicker.Windows
 {
     public partial class MainWindow : Form
     {
-        private int keyStart = (int)KeysAndMouseButtons.Z;
-        private int keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
-        private int amoutClicks = 100000;
-        private int delayMs = 100;
-        private bool infinnityClicks = true;
-        private bool canStart = true;
+        private ConfigApp config = new();
 
+        private bool canStart = true;
         private bool _startClickerThread = false;
         private bool _aliveClickerThread = true;
 
@@ -24,17 +22,21 @@ namespace AutoClicker.Windows
 
         private readonly IClicker _clicker;
         private readonly IKeyboardMouseEvents _globalHook;
-        public MainWindow(IClicker clicker)
+        private readonly IConfigController _config;
+        public MainWindow(IClicker clicker, IConfigController configController)
         {
             InitializeComponent();
 
             _clicker = clicker;
+            _config = configController;
 
-            KeyTextBox.Text = ((KeysAndMouseButtons)keyStart).ToString();
-            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)keyWillPress).ToString();
-            AmountTextBox.Text = amoutClicks.ToString();
-            DelayTextBox.Text = delayMs.ToString();
-            InfinityCheckBox.Checked = infinnityClicks;
+            config = _config.GetConfig();
+
+            KeyTextBox.Text = ((KeysAndMouseButtons)config.keyStart).ToString();
+            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)config.keyWillPress).ToString();
+            AmountTextBox.Text = config.amoutClicks.ToString();
+            DelayTextBox.Text = config.delayMs.ToString();
+            InfinityCheckBox.Checked = config.infinnityClicks;
 
             _globalHook = Hook.GlobalEvents();
             _globalHook.KeyDown += GlobalHook_KeyDown;
@@ -46,105 +48,83 @@ namespace AutoClicker.Windows
                 {
                     for (int i = 0; _startClickerThread; i++)
                     {
-                        if (i >= amoutClicks && !infinnityClicks)
+                        if (i >= config.amoutClicks && !config.infinnityClicks)
                             _startClickerThread = false;
 
-                        new Clicker().Click(ref keyWillPress);
-                        Thread.Sleep(delayMs);
+                        new Clicker().Click(config.keyWillPress);
+                        Thread.Sleep(config.delayMs);
                     }
                 }
             });
+
             _threadClicker.Start();
         }
 
         private void GlobalHook_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (e.KeyValue == keyStart
+            if (e.KeyValue == config.keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
+                && !AmountTextBox.Focused
+                && !DelayTextBox.Focused
                 && canStart)
                 ChangeStatusClicker();
         }
         private void GlobalHook_MouseDown(object? sender, MouseEventArgs e)
         {
-            if ((int)e.Button == keyStart
+            if ((int)e.Button == config.keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
-                && canStart
-                )
+                && !AmountTextBox.Focused
+                && !DelayTextBox.Focused
+                && canStart)
                 ChangeStatusClicker();
         }
 
         private void ChangeStatusClicker()
         {
-            if (keyStart == keyWillPress)
+            if (config.keyStart == config.keyWillPress)
             {
                 canStart = false;
                 MessageBox.Show("Key for start can't be equel to key will press.", "Exception");
+
                 KeyTextBox.Text = "Z";
                 KeyWillPressTextBox.Text = "LBUTTON";
-                keyStart = (int)KeysAndMouseButtons.Z;
-                keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
+
+                config.keyStart = (int)KeysAndMouseButtons.Z;
+                config.keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
                 return;
             }
 
             _startClickerThread = !_startClickerThread;
 
             Process pr = Process.GetCurrentProcess();
-
-            if (Focused && _startClickerThread)
-            {
-                this.Enabled = false;
-                TurnOffElement();
+            if (Focused && _startClickerThread || !Focused && !_startClickerThread)
                 SetForegroundWindow(pr.MainWindowHandle);
-            }
-            else if (!Focused && !_startClickerThread)
-            {
-                this.Enabled = true;
-                SetForegroundWindow(pr.MainWindowHandle);
-                TurnOnElement();
-            }
-        }
-        private void TurnOffElement()
-        {
-            AmountTextBox.Enabled = false;
-            KeyTextBox.Enabled = false;
-            KeyWillPressTextBox.Enabled = false;
-            DelayTextBox.Enabled = false;
-            InfinityCheckBox.Enabled = false;
         }
 
-        private void TurnOnElement()
-        {
-            AmountTextBox.Enabled = !infinnityClicks;
-            KeyTextBox.Enabled = true;
-            KeyWillPressTextBox.Enabled = true;
-            DelayTextBox.Enabled = true;
-            InfinityCheckBox.Enabled = true;
-        }
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             KeyTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
-            keyStart = (int)e.KeyValue;
+            config.keyStart = (int)e.KeyValue;
 
         }
         private void KeyTextBox_MouseUp(object sender, MouseEventArgs e)
         {
             KeyTextBox.Text = ((KeysAndMouseButtons)e.Button).ToString();
-            keyStart = (int)e.Button;
+            config.keyStart = (int)e.Button;
         }
 
         private void KeyWillBePressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-
             KeyWillPressTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
-            keyWillPress = (int)e.KeyValue;
+            config.keyWillPress = (int)e.KeyValue;
 
         }
         private void KeyWillBePressTextBox_MouseUp(object sender, MouseEventArgs e)
         {
             KeyWillPressTextBox.Text = ((KeysAndMouseButtons)e.Button).ToString();
-            keyWillPress = (int)e.Button;
+            config.keyWillPress = (int)e.Button;
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
@@ -168,24 +148,25 @@ namespace AutoClicker.Windows
             if (InfinityCheckBox.Checked)
             {
                 AmountTextBox.Enabled = false;
-                infinnityClicks = true;
+                config.infinnityClicks = true;
             }
             else
             {
                 AmountTextBox.Enabled = true;
-                infinnityClicks = false;
+                config.infinnityClicks = false;
             }
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
+            _config.SetConfig(config);
             _aliveClickerThread = false;
             _startClickerThread = false;
         }
 
         private void AmountTextBox_TextChanged(object sender, EventArgs e)
         {
-            amoutClicks = int.Parse(AmountTextBox.Text);
+            config.amoutClicks = int.Parse(AmountTextBox.Text);
         }
 
         [DllImport("User32.dll")]

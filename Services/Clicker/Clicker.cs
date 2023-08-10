@@ -6,7 +6,7 @@ namespace AutoClicker.Services.Clicker
 {
     public class Clicker : IClicker
     {
-        public void Click(ref int key)
+        public void Click(int key)
         {
             InputSimulator input = new();
 

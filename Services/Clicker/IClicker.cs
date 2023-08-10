@@ -2,6 +2,6 @@
 {
     public interface IClicker
     {
-        void Click(ref int key);
+        void Click(int key);
     }
 }

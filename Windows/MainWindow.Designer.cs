@@ -78,7 +78,6 @@
             this.AmountTextBox.Size = new System.Drawing.Size(100, 33);
             this.AmountTextBox.TabIndex = 1;
             this.AmountTextBox.TabStop = false;
-            this.AmountTextBox.TextChanged += new System.EventHandler(this.AmountTextBox_TextChanged);
             this.AmountTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
             // 
             // InfinityCheckBox
@@ -166,6 +165,7 @@
             this.Controls.Add(this.DelayTextBox);
             this.Controls.Add(this.DelayLabel);
             this.Name = "MainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto-Clicker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
