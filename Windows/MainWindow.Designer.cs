@@ -113,7 +113,6 @@
             this.KeyTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyTextBox.TabIndex = 4;
             this.KeyTextBox.TabStop = false;
-            this.KeyTextBox.Text = "Z";
             this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyUp);
@@ -139,7 +138,6 @@
             this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyWillPressTextBox.TabIndex = 5;
             this.KeyWillPressTextBox.TabStop = false;
-            this.KeyWillPressTextBox.Text = "LEFT";
             this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);

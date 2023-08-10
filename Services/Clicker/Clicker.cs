@@ -35,7 +35,6 @@ namespace AutoClicker.Services.Clicker
                 input.Mouse.XButtonClick(2);
             }
 
-
             Thread.Sleep(10);
         }
 

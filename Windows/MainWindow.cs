@@ -9,72 +9,75 @@ namespace AutoClicker.Windows
 {
     public partial class MainWindow : Form
     {
-        private int _keyStart = (int)VirtualKeyCode.VK_Z;
-        private int _keyWillPress = (int)MouseButtons.Left;
-        private int _amoutClicks = 100000;
+        private int keyStart = (int)VirtualKeyCode.VK_Z;
+        private int keyWillPress = (int)MouseButtons.Left;
+        private int amoutClicks = 100000;
+        private int delay = 100; // in ms
         private bool _infinnityClicks = true;
+
 
         private bool _startClickerThread = false;
         private bool _aliveClickerThread = true;
 
-        private Thread threadClicker;
+        private readonly Thread _threadClicker;
 
         private readonly IClicker _clicker;
-        private readonly IKeyboardMouseEvents m_GlobalHook;
+        private readonly IKeyboardMouseEvents _globalHook;
         public MainWindow(IClicker clicker)
         {
             InitializeComponent();
 
             _clicker = clicker;
 
-            KeyTextBox.Text = _keyStart.ToString();
-            KeyWillPressTextBox.Text = _keyWillPress.ToString();
-            AmountTextBox.Text = _amoutClicks.ToString();
+            KeyTextBox.Text = keyStart.ToString();
+            KeyWillPressTextBox.Text = keyWillPress.ToString();
+            AmountTextBox.Text = amoutClicks.ToString();
+            DelayTextBox.Text = delay.ToString();
             InfinityCheckBox.Checked = _infinnityClicks;
 
-            m_GlobalHook = Hook.GlobalEvents();
-            m_GlobalHook.KeyDown += M_GlobalHook_KeyDown;
-            m_GlobalHook.MouseDown += M_GlobalHook_MouseDown;
+            _globalHook = Hook.GlobalEvents();
+            _globalHook.KeyDown += GlobalHook_KeyDown;
+            _globalHook.MouseDown += GlobalHook_MouseDown;
 
-            threadClicker = new Thread(() =>
+            _threadClicker = new Thread(() =>
             {
                 while (_aliveClickerThread)
                 {
-                    for (int i = 0; _startClickerThread && i != _amoutClicks; i++)
+                    for (int i = 0; _startClickerThread && i != amoutClicks; i++)
                     {
-                        if (_amoutClicks >= 0 && !_infinnityClicks)
+                        if (amoutClicks >= 0 && !_infinnityClicks)
                             break;
 
-                        new Clicker().Click(ref _keyWillPress);
-
+                        new Clicker().Click(ref keyWillPress);
+                        Thread.Sleep(delay);
                     }
                 }
             });
-            threadClicker.Start();
+            _threadClicker.Start();
         }
 
-        private void M_GlobalHook_KeyDown(object? sender, KeyEventArgs e)
+        private void GlobalHook_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (e.KeyValue == _keyStart
+            if (e.KeyValue == keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
                 && !InfinityCheckBox.Focused)
-                Start();
+                ChangeStatusClicker();
         }
-        private void M_GlobalHook_MouseDown(object? sender, MouseEventArgs e)
+        private void GlobalHook_MouseDown(object? sender, MouseEventArgs e)
         {
-            if ((int)e.Button == _keyStart
+            if ((int)e.Button == keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
                 && !InfinityCheckBox.Focused)
-                Start();
+                ChangeStatusClicker();
         }
 
-        private void Start()
+        private void ChangeStatusClicker()
         {
             _startClickerThread = !_startClickerThread;
             Process pr = Process.GetCurrentProcess();
@@ -86,23 +89,23 @@ namespace AutoClicker.Windows
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             KeyTextBox.Text = e.KeyCode.ToString();
-            _keyStart = (int)e.KeyValue;
+            keyStart = (int)e.KeyValue;
         }
         private void KeyTextBox_MouseUp(object sender, MouseEventArgs e)
         {
             KeyTextBox.Text = e.Button.ToString();
-            _keyStart = (int)e.Button;
+            keyStart = (int)e.Button;
         }
 
         private void KeyWillBePressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             KeyWillPressTextBox.Text = e.KeyCode.ToString();
-            _keyWillPress = (int)e.KeyValue;
+            keyWillPress = (int)e.KeyValue;
         }
         private void KeyWillBePressTextBox_MouseUp(object sender, MouseEventArgs e)
         {
             KeyWillPressTextBox.Text = e.Button.ToString();
-            _keyWillPress = (int)e.Button;
+            keyWillPress = (int)e.Button;
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
