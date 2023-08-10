@@ -187,5 +187,10 @@ namespace AutoClicker.Windows
         {
             Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
         }
+
+        private void LinkLabelGitHub_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://github.com/") { UseShellExecute = true });
+        }
     }
 }

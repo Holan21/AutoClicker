@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.DelayLabel = new System.Windows.Forms.Label();
             this.DelayTextBox = new System.Windows.Forms.TextBox();
             this.AmountClicksLablel = new System.Windows.Forms.Label();
@@ -42,7 +43,8 @@
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
             this.LinkLabelRepo = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.CreatorLinkLable = new System.Windows.Forms.LinkLabel();
+            this.LinkLabelGitHub = new System.Windows.Forms.Label();
             this.StatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -205,26 +207,36 @@
             this.LinkLabelRepo.Text = "Auto-Clicker";
             this.LinkLabelRepo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelRepo_LinkClicked);
             // 
-            // linkLabel1
+            // CreatorLinkLable
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 27.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.CreatorLinkLable.AutoSize = true;
+            this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 27.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(355, 21);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(181, 50);
-            this.linkLabel1.TabIndex = 12;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "By Holan";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.CreatorLinkLable.LinkColor = System.Drawing.Color.Black;
+            this.CreatorLinkLable.Location = new System.Drawing.Point(355, 21);
+            this.CreatorLinkLable.Name = "CreatorLinkLable";
+            this.CreatorLinkLable.Size = new System.Drawing.Size(181, 50);
+            this.CreatorLinkLable.TabIndex = 12;
+            this.CreatorLinkLable.TabStop = true;
+            this.CreatorLinkLable.Text = "By Holan";
+            this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // LinkLabelGitHub
+            // 
+            this.LinkLabelGitHub.Image = ((System.Drawing.Image)(resources.GetObject("LinkLabelGitHub.Image")));
+            this.LinkLabelGitHub.Location = new System.Drawing.Point(724, 334);
+            this.LinkLabelGitHub.Name = "LinkLabelGitHub";
+            this.LinkLabelGitHub.Size = new System.Drawing.Size(64, 64);
+            this.LinkLabelGitHub.TabIndex = 13;
+            this.LinkLabelGitHub.Click += new System.EventHandler(this.LinkLabelGitHub_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.LinkLabelGitHub);
+            this.Controls.Add(this.CreatorLinkLable);
             this.Controls.Add(this.LinkLabelRepo);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
@@ -265,6 +277,7 @@
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;
         private LinkLabel LinkLabelRepo;
-        private LinkLabel linkLabel1;
+        private LinkLabel CreatorLinkLable;
+        private Label LinkLabelGitHub;
     }
 }
