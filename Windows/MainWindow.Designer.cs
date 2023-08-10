@@ -98,9 +98,9 @@
             this.KeyLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyLabel.Location = new System.Drawing.Point(12, 84);
             this.KeyLabel.Name = "KeyLabel";
-            this.KeyLabel.Size = new System.Drawing.Size(248, 25);
+            this.KeyLabel.Size = new System.Drawing.Size(124, 25);
             this.KeyLabel.TabIndex = 5;
-            this.KeyLabel.Text = "Key(for _startClickerThread):";
+            this.KeyLabel.Text = "Key(for start):";
             // 
             // KeyTextBox
             // 
