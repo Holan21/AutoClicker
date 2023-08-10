@@ -99,8 +99,14 @@ namespace AutoClicker.Windows
             _startClickerThread = !_startClickerThread;
 
             Process pr = Process.GetCurrentProcess();
-            if (Focused && _startClickerThread || !Focused && !_startClickerThread)
+            if (Focused && _startClickerThread)
+            {
                 SetForegroundWindow(pr.MainWindowHandle);
+                StatusBarLabel.Text = "Process is going";
+            }
+            else if (!Focused && !_startClickerThread)
+                StatusBarLabel.Text = "Completed succesfully!";
+
         }
 
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -171,5 +177,6 @@ namespace AutoClicker.Windows
 
         [DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr hWnd);
+
     }
 }
