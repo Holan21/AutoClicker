@@ -182,5 +182,10 @@ namespace AutoClicker.Windows
         {
             Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
+        }
     }
 }

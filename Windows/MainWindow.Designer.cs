@@ -42,6 +42,7 @@
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
             this.LinkLabelRepo = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.StatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -194,22 +195,36 @@
             // LinkLabelRepo
             // 
             this.LinkLabelRepo.AutoSize = true;
-            this.LinkLabelRepo.Font = new System.Drawing.Font("Segoe UI", 36F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.LinkLabelRepo.Font = new System.Drawing.Font("Segoe UI", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.LinkLabelRepo.LinkColor = System.Drawing.Color.Black;
             this.LinkLabelRepo.Location = new System.Drawing.Point(23, 9);
             this.LinkLabelRepo.Name = "LinkLabelRepo";
-            this.LinkLabelRepo.Size = new System.Drawing.Size(309, 65);
+            this.LinkLabelRepo.Size = new System.Drawing.Size(310, 65);
             this.LinkLabelRepo.TabIndex = 11;
             this.LinkLabelRepo.TabStop = true;
             this.LinkLabelRepo.Text = "Auto-Clicker";
             this.LinkLabelRepo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelRepo_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 27.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.Location = new System.Drawing.Point(355, 21);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(181, 50);
+            this.linkLabel1.TabIndex = 12;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "By Holan";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.LinkLabelRepo);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
@@ -250,5 +265,6 @@
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;
         private LinkLabel LinkLabelRepo;
+        private LinkLabel linkLabel1;
     }
 }
