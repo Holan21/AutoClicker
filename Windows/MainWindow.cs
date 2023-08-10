@@ -4,6 +4,7 @@ using Gma.System.MouseKeyHook;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
+
 namespace AutoClicker.Windows
 
 {
@@ -12,9 +13,9 @@ namespace AutoClicker.Windows
         private int keyStart = (int)KeysAndMouseButtons.Z;
         private int keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
         private int amoutClicks = 100000;
-        private int delay = 100; // in msz
-        private bool _infinnityClicks = true;
-
+        private int delayMs = 100;
+        private bool infinnityClicks = true;
+        private bool canStart = true;
 
         private bool _startClickerThread = false;
         private bool _aliveClickerThread = true;
@@ -32,8 +33,8 @@ namespace AutoClicker.Windows
             KeyTextBox.Text = ((KeysAndMouseButtons)keyStart).ToString();
             KeyWillPressTextBox.Text = ((KeysAndMouseButtons)keyWillPress).ToString();
             AmountTextBox.Text = amoutClicks.ToString();
-            DelayTextBox.Text = delay.ToString();
-            InfinityCheckBox.Checked = _infinnityClicks;
+            DelayTextBox.Text = delayMs.ToString();
+            InfinityCheckBox.Checked = infinnityClicks;
 
             _globalHook = Hook.GlobalEvents();
             _globalHook.KeyDown += GlobalHook_KeyDown;
@@ -43,13 +44,13 @@ namespace AutoClicker.Windows
             {
                 while (_aliveClickerThread)
                 {
-                    for (int i = 0; _startClickerThread && i != amoutClicks; i++)
+                    for (int i = 0; _startClickerThread; i++)
                     {
-                        if (amoutClicks >= 0 && !_infinnityClicks)
-                            break;
+                        if (i >= amoutClicks && !infinnityClicks)
+                            _startClickerThread = false;
 
                         new Clicker().Click(ref keyWillPress);
-                        Thread.Sleep(delay);
+                        Thread.Sleep(delayMs);
                     }
                 }
             });
@@ -61,9 +62,7 @@ namespace AutoClicker.Windows
             if (e.KeyValue == keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
-                && !AmountTextBox.Focused
-                && !DelayTextBox.Focused
-                && !InfinityCheckBox.Focused)
+                && canStart)
                 ChangeStatusClicker();
         }
         private void GlobalHook_MouseDown(object? sender, MouseEventArgs e)
@@ -71,25 +70,63 @@ namespace AutoClicker.Windows
             if ((int)e.Button == keyStart
                 && !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
-                && !AmountTextBox.Focused
-                && !DelayTextBox.Focused
-                && !InfinityCheckBox.Focused)
+                && canStart
+                )
                 ChangeStatusClicker();
         }
 
         private void ChangeStatusClicker()
         {
+            if (keyStart == keyWillPress)
+            {
+                canStart = false;
+                MessageBox.Show("Key for start can't be equel to key will press.", "Exception");
+                KeyTextBox.Text = "Z";
+                KeyWillPressTextBox.Text = "LBUTTON";
+                keyStart = (int)KeysAndMouseButtons.Z;
+                keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
+                return;
+            }
+
             _startClickerThread = !_startClickerThread;
+
             Process pr = Process.GetCurrentProcess();
-            var pointer = pr.MainWindowHandle;
-            if (Focused && _startClickerThread || !Focused && !_startClickerThread)
-                SetForegroundWindow(pointer);
+
+            if (Focused && _startClickerThread)
+            {
+                this.Enabled = false;
+                TurnOffElement();
+                SetForegroundWindow(pr.MainWindowHandle);
+            }
+            else if (!Focused && !_startClickerThread)
+            {
+                this.Enabled = true;
+                SetForegroundWindow(pr.MainWindowHandle);
+                TurnOnElement();
+            }
+        }
+        private void TurnOffElement()
+        {
+            AmountTextBox.Enabled = false;
+            KeyTextBox.Enabled = false;
+            KeyWillPressTextBox.Enabled = false;
+            DelayTextBox.Enabled = false;
+            InfinityCheckBox.Enabled = false;
         }
 
+        private void TurnOnElement()
+        {
+            AmountTextBox.Enabled = !infinnityClicks;
+            KeyTextBox.Enabled = true;
+            KeyWillPressTextBox.Enabled = true;
+            DelayTextBox.Enabled = true;
+            InfinityCheckBox.Enabled = true;
+        }
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             KeyTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
             keyStart = (int)e.KeyValue;
+
         }
         private void KeyTextBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -99,8 +136,10 @@ namespace AutoClicker.Windows
 
         private void KeyWillBePressTextBox_KeyUp(object sender, KeyEventArgs e)
         {
+
             KeyWillPressTextBox.Text = ((KeysAndMouseButtons)e.KeyCode).ToString();
             keyWillPress = (int)e.KeyValue;
+
         }
         private void KeyWillBePressTextBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -129,10 +168,12 @@ namespace AutoClicker.Windows
             if (InfinityCheckBox.Checked)
             {
                 AmountTextBox.Enabled = false;
+                infinnityClicks = true;
             }
             else
             {
                 AmountTextBox.Enabled = true;
+                infinnityClicks = false;
             }
         }
 
@@ -140,6 +181,11 @@ namespace AutoClicker.Windows
         {
             _aliveClickerThread = false;
             _startClickerThread = false;
+        }
+
+        private void AmountTextBox_TextChanged(object sender, EventArgs e)
+        {
+            amoutClicks = int.Parse(AmountTextBox.Text);
         }
 
         [DllImport("User32.dll")]

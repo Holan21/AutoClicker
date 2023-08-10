@@ -78,6 +78,7 @@
             this.AmountTextBox.Size = new System.Drawing.Size(100, 33);
             this.AmountTextBox.TabIndex = 1;
             this.AmountTextBox.TabStop = false;
+            this.AmountTextBox.TextChanged += new System.EventHandler(this.AmountTextBox_TextChanged);
             this.AmountTextBox.TextChanged += new System.EventHandler(this.OnlyNumber_TextChange);
             // 
             // InfinityCheckBox
@@ -110,11 +111,15 @@
             this.KeyTextBox.Location = new System.Drawing.Point(180, 81);
             this.KeyTextBox.MaxLength = 1;
             this.KeyTextBox.Name = "KeyTextBox";
+            this.KeyTextBox.ReadOnly = true;
+            this.KeyTextBox.ShortcutsEnabled = false;
             this.KeyTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyTextBox.TabIndex = 4;
             this.KeyTextBox.TabStop = false;
             this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.KeyTextBox.WordWrap = false;
             this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
+            this.KeyTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
             this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyUp);
             this.KeyTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KeyTextBox_MouseUp);
             // 
@@ -135,6 +140,7 @@
             this.KeyWillPressTextBox.Location = new System.Drawing.Point(180, 120);
             this.KeyWillPressTextBox.MaxLength = 1;
             this.KeyWillPressTextBox.Name = "KeyWillPressTextBox";
+            this.KeyWillPressTextBox.ReadOnly = true;
             this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyWillPressTextBox.TabIndex = 5;
             this.KeyWillPressTextBox.TabStop = false;
