@@ -11,8 +11,9 @@ namespace AutoClicker.Windows
     {
         private int _keyStart = (int)VirtualKeyCode.VK_Z;
         private int _keyWillPress = (int)MouseButtons.Left;
-        private bool start = false;
-        private bool infinnity = true;
+        private bool _startClickerThread = false;
+        private bool _aliveClickerThread = true;
+        private bool _infinnityClicks = true;
         private int _amoutClicks = 100000;
 
         private Thread thread;
@@ -30,11 +31,11 @@ namespace AutoClicker.Windows
 
             thread = new Thread(() =>
             {
-                while (true)
+                while (_aliveClickerThread)
                 {
-                    for (int i = 0; start && i != _amoutClicks; i++)
+                    for (int i = 0; _startClickerThread && i != _amoutClicks; i++)
                     {
-                        if (_amoutClicks >= 0 && !infinnity)
+                        if (_amoutClicks >= 0 && !_infinnityClicks)
                             break;
 
                         new Clicker().Click(ref _keyWillPress);
@@ -69,10 +70,10 @@ namespace AutoClicker.Windows
 
         private void Start()
         {
-            start = !start;
+            _startClickerThread = !_startClickerThread;
             Process pr = Process.GetCurrentProcess();
             var pointer = pr.MainWindowHandle;
-            if (Focused && start || !Focused && !start)
+            if (Focused && _startClickerThread || !Focused && !_startClickerThread)
                 SetForegroundWindow(pointer);
         }
 
@@ -114,9 +115,13 @@ namespace AutoClicker.Windows
             }
         }
 
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _aliveClickerThread = false;
+            _startClickerThread = false;
+        }
+
         [DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr hWnd);
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
     }
 }

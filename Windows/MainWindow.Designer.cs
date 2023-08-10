@@ -37,7 +37,6 @@
             this.KeyTextBox = new System.Windows.Forms.TextBox();
             this.KeyWillPressLabel = new System.Windows.Forms.Label();
             this.KeyWillPressTextBox = new System.Windows.Forms.TextBox();
-            this.FocusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DelayLabel
@@ -99,9 +98,9 @@
             this.KeyLabel.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyLabel.Location = new System.Drawing.Point(12, 84);
             this.KeyLabel.Name = "KeyLabel";
-            this.KeyLabel.Size = new System.Drawing.Size(124, 25);
+            this.KeyLabel.Size = new System.Drawing.Size(248, 25);
             this.KeyLabel.TabIndex = 5;
-            this.KeyLabel.Text = "Key(for start):";
+            this.KeyLabel.Text = "Key(for _startClickerThread):";
             // 
             // KeyTextBox
             // 
@@ -139,20 +138,12 @@
             this.KeyWillPressTextBox.Size = new System.Drawing.Size(100, 33);
             this.KeyWillPressTextBox.TabIndex = 5;
             this.KeyWillPressTextBox.TabStop = false;
-            this.KeyWillPressTextBox.Text = "LBUTTON";
+            this.KeyWillPressTextBox.Text = "LEFT";
             this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyWillBePressTextBox_KeyUp);
             this.KeyWillPressTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KeyWillBePressTextBox_MouseUp);
-            // 
-            // FocusLabel
-            // 
-            this.FocusLabel.AutoSize = true;
-            this.FocusLabel.Location = new System.Drawing.Point(592, 65);
-            this.FocusLabel.Name = "FocusLabel";
-            this.FocusLabel.Size = new System.Drawing.Size(0, 15);
-            this.FocusLabel.TabIndex = 8;
             // 
             // MainWindow
             // 
@@ -160,7 +151,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.FocusLabel);
             this.Controls.Add(this.KeyWillPressTextBox);
             this.Controls.Add(this.KeyWillPressLabel);
             this.Controls.Add(this.KeyTextBox);
@@ -172,6 +162,7 @@
             this.Controls.Add(this.DelayLabel);
             this.Name = "MainWindow";
             this.Text = "Auto-Clicker";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,6 +179,5 @@
         private TextBox KeyTextBox;
         private Label KeyWillPressLabel;
         private TextBox KeyWillPressTextBox;
-        private Label FocusLabel;
     }
 }
