@@ -11,25 +11,32 @@ namespace AutoClicker.Windows
     {
         private int _keyStart = (int)VirtualKeyCode.VK_Z;
         private int _keyWillPress = (int)MouseButtons.Left;
+        private int _amoutClicks = 100000;
+        private bool _infinnityClicks = true;
+
         private bool _startClickerThread = false;
         private bool _aliveClickerThread = true;
-        private bool _infinnityClicks = true;
-        private int _amoutClicks = 100000;
 
-        private Thread thread;
+        private Thread threadClicker;
 
         private readonly IClicker _clicker;
         private readonly IKeyboardMouseEvents m_GlobalHook;
         public MainWindow(IClicker clicker)
         {
             InitializeComponent();
+
             _clicker = clicker;
+
+            KeyTextBox.Text = _keyStart.ToString();
+            KeyWillPressTextBox.Text = _keyWillPress.ToString();
+            AmountTextBox.Text = _amoutClicks.ToString();
+            InfinityCheckBox.Checked = _infinnityClicks;
 
             m_GlobalHook = Hook.GlobalEvents();
             m_GlobalHook.KeyDown += M_GlobalHook_KeyDown;
             m_GlobalHook.MouseDown += M_GlobalHook_MouseDown;
 
-            thread = new Thread(() =>
+            threadClicker = new Thread(() =>
             {
                 while (_aliveClickerThread)
                 {
@@ -39,12 +46,11 @@ namespace AutoClicker.Windows
                             break;
 
                         new Clicker().Click(ref _keyWillPress);
-                        _amoutClicks--;
 
                     }
                 }
             });
-            thread.Start();
+            threadClicker.Start();
         }
 
         private void M_GlobalHook_KeyDown(object? sender, KeyEventArgs e)
@@ -115,6 +121,18 @@ namespace AutoClicker.Windows
             }
         }
 
+        private void InfinityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (InfinityCheckBox.Checked)
+            {
+                AmountTextBox.Enabled = false;
+            }
+            else
+            {
+                AmountTextBox.Enabled = true;
+            }
+        }
+
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             _aliveClickerThread = false;
@@ -123,13 +141,5 @@ namespace AutoClicker.Windows
 
         [DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr hWnd);
-
-        private void InfinityCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (InfinityCheckBox.Checked)
-                AmountTextBox.Enabled = false;
-            else
-                AmountTextBox.Enabled = true;
-        }
     }
 }
