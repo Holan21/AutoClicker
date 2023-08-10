@@ -91,6 +91,7 @@
             this.InfinityCheckBox.TabStop = false;
             this.InfinityCheckBox.Text = "Infinity";
             this.InfinityCheckBox.UseVisualStyleBackColor = true;
+            this.InfinityCheckBox.CheckedChanged += new System.EventHandler(this.InfinityCheckBox_CheckedChanged);
             // 
             // KeyLabel
             // 

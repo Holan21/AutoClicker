@@ -123,5 +123,13 @@ namespace AutoClicker.Windows
 
         [DllImport("User32.dll")]
         static extern int SetForegroundWindow(IntPtr hWnd);
+
+        private void InfinityCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (InfinityCheckBox.Checked)
+                AmountTextBox.Enabled = false;
+            else
+                AmountTextBox.Enabled = true;
+        }
     }
 }
