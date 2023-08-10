@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.HintTextBox = new System.Windows.Forms.TextBox();
             this.StatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,12 +178,24 @@
             this.StatusBarLabel.Size = new System.Drawing.Size(322, 47);
             this.StatusBarLabel.Text = "Waiting for start...";
             // 
+            // HintTextBox
+            // 
+            this.HintTextBox.Enabled = false;
+            this.HintTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.HintTextBox.Location = new System.Drawing.Point(355, 251);
+            this.HintTextBox.Multiline = true;
+            this.HintTextBox.Name = "HintTextBox";
+            this.HintTextBox.Size = new System.Drawing.Size(149, 131);
+            this.HintTextBox.TabIndex = 10;
+            this.HintTextBox.Text = "To stop\r\njust press\r\n\"Target-Key\"\r\n    Again!";
+            this.HintTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.ControlBox = false;
+            this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.KeyWillPressTextBox);
@@ -219,5 +232,6 @@
         private Label label1;
         private StatusStrip StatusBar;
         private ToolStripStatusLabel StatusBarLabel;
+        private TextBox HintTextBox;
     }
 }
