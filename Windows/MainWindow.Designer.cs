@@ -37,6 +37,7 @@
             this.KeyTextBox = new System.Windows.Forms.TextBox();
             this.KeyWillPressLabel = new System.Windows.Forms.Label();
             this.KeyWillPressTextBox = new System.Windows.Forms.TextBox();
+            this.FocusLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DelayLabel
@@ -115,9 +116,8 @@
             this.KeyTextBox.Text = "Z";
             this.KeyTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUp);
-            this.KeyTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MouseUp);
+            this.KeyTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyTextBox_KeyUp);
+            this.KeyTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KeyTextBox_MouseUp);
             // 
             // KeyWillPressLabel
             // 
@@ -143,7 +143,16 @@
             this.KeyWillPressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.KeyWillPressTextBox.Click += new System.EventHandler(this.SelectAllTextBox);
             this.KeyWillPressTextBox.TextChanged += new System.EventHandler(this.SelectAllTextBox);
-            this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyUp);
+            this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyWillBePressTextBox_KeyUp);
+            this.KeyWillPressTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KeyWillBePressTextBox_MouseUp);
+            // 
+            // FocusLabel
+            // 
+            this.FocusLabel.AutoSize = true;
+            this.FocusLabel.Location = new System.Drawing.Point(592, 65);
+            this.FocusLabel.Name = "FocusLabel";
+            this.FocusLabel.Size = new System.Drawing.Size(0, 15);
+            this.FocusLabel.TabIndex = 8;
             // 
             // MainWindow
             // 
@@ -151,6 +160,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.FocusLabel);
             this.Controls.Add(this.KeyWillPressTextBox);
             this.Controls.Add(this.KeyWillPressLabel);
             this.Controls.Add(this.KeyTextBox);
@@ -178,5 +188,6 @@
         private TextBox KeyTextBox;
         private Label KeyWillPressLabel;
         private TextBox KeyWillPressTextBox;
+        private Label FocusLabel;
     }
 }
