@@ -42,7 +42,6 @@
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
-            this.LinkLabelRepo = new System.Windows.Forms.LinkLabel();
             this.CreatorLinkLable = new System.Windows.Forms.LinkLabel();
             this.LinkLabelGitHub = new System.Windows.Forms.Label();
             this.StatusBar.SuspendLayout();
@@ -170,9 +169,9 @@
             // 
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusBarLabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 398);
+            this.StatusBar.Location = new System.Drawing.Point(0, 417);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(800, 52);
+            this.StatusBar.Size = new System.Drawing.Size(792, 52);
             this.StatusBar.TabIndex = 9;
             // 
             // StatusBarLabel
@@ -195,26 +194,13 @@
             this.HintTextBox.Text = "To stop\r\njust press\r\n\"Target-Key\"\r\n    Again!";
             this.HintTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // LinkLabelRepo
-            // 
-            this.LinkLabelRepo.AutoSize = true;
-            this.LinkLabelRepo.Font = new System.Drawing.Font("Segoe UI", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.LinkLabelRepo.LinkColor = System.Drawing.Color.Black;
-            this.LinkLabelRepo.Location = new System.Drawing.Point(23, 9);
-            this.LinkLabelRepo.Name = "LinkLabelRepo";
-            this.LinkLabelRepo.Size = new System.Drawing.Size(310, 65);
-            this.LinkLabelRepo.TabIndex = 11;
-            this.LinkLabelRepo.TabStop = true;
-            this.LinkLabelRepo.Text = "Auto-Clicker";
-            this.LinkLabelRepo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelRepo_LinkClicked);
-            // 
             // CreatorLinkLable
             // 
             this.CreatorLinkLable.AutoSize = true;
             this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 27.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.CreatorLinkLable.LinkColor = System.Drawing.Color.Black;
-            this.CreatorLinkLable.Location = new System.Drawing.Point(355, 21);
+            this.CreatorLinkLable.Location = new System.Drawing.Point(619, 348);
             this.CreatorLinkLable.Name = "CreatorLinkLable";
             this.CreatorLinkLable.Size = new System.Drawing.Size(181, 50);
             this.CreatorLinkLable.TabIndex = 12;
@@ -225,7 +211,7 @@
             // LinkLabelGitHub
             // 
             this.LinkLabelGitHub.Image = ((System.Drawing.Image)(resources.GetObject("LinkLabelGitHub.Image")));
-            this.LinkLabelGitHub.Location = new System.Drawing.Point(724, 334);
+            this.LinkLabelGitHub.Location = new System.Drawing.Point(200, 21);
             this.LinkLabelGitHub.Name = "LinkLabelGitHub";
             this.LinkLabelGitHub.Size = new System.Drawing.Size(64, 64);
             this.LinkLabelGitHub.TabIndex = 13;
@@ -235,11 +221,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(792, 469);
             this.Controls.Add(this.LinkLabelGitHub);
             this.Controls.Add(this.CreatorLinkLable);
-            this.Controls.Add(this.LinkLabelRepo);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.EndlessModeLabel);
@@ -252,6 +236,7 @@
             this.Controls.Add(this.AmountClicksLablel);
             this.Controls.Add(this.DelayTextBox);
             this.Controls.Add(this.DelayLabel);
+            this.MaximumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto-Clicker";
@@ -279,7 +264,6 @@
         private StatusStrip StatusBar;
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;
-        private LinkLabel LinkLabelRepo;
         private LinkLabel CreatorLinkLable;
         private Label LinkLabelGitHub;
     }
