@@ -67,6 +67,8 @@ namespace AutoClicker.Windows
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
+                && !HintTextBox.Focused
+                && !InfinityCheckBox.Focused
                 && canStart)
                 ChangeStatusClicker();
         }
@@ -77,6 +79,8 @@ namespace AutoClicker.Windows
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
+                && !InfinityCheckBox.Focused
+                && !HintTextBox.Focused
                 && canStart)
                 ChangeStatusClicker();
         }
@@ -98,15 +102,10 @@ namespace AutoClicker.Windows
 
             _startClickerThread = !_startClickerThread;
 
-            Process pr = Process.GetCurrentProcess();
-            if (Focused && _startClickerThread)
-            {
-                WindowState = FormWindowState.Minimized;
-                StatusBarLabel.Text = "Process is going";
-            }
-            else if (!Focused && !_startClickerThread)
+            if (_startClickerThread)
+                StatusBarLabel.Text = "Process is going...";
+            else
                 StatusBarLabel.Text = "Completed succesfully!";
-
         }
 
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -175,9 +174,6 @@ namespace AutoClicker.Windows
             config.amoutClicks = int.Parse(AmountTextBox.Text);
         }
 
-        [DllImport("User32.dll")]
-        static extern int SetForegroundWindow(IntPtr hWnd);
-
         private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
@@ -190,7 +186,10 @@ namespace AutoClicker.Windows
 
         private void LinkLabelGitHub_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://github.com/") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo(config.LinkGitHub) { UseShellExecute = true });
         }
+
+        [DllImport("User32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hHnd);
     }
 }

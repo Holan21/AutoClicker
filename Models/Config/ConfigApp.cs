@@ -19,5 +19,7 @@ namespace AutoClicker.Models.Config
         public string LinkRepo { get; set; } = "https://github.com/Holan21/AutoClicker";
         [JsonPropertyName("linkCreator")]
         public string LinkCreator { get; set; } = "https://github.com/Holan21";
+        [JsonPropertyName("linkGitHub")]
+        public string LinkGitHub { get; set; } = "https://github.com/";
     }
 }

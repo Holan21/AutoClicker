@@ -191,6 +191,7 @@
             this.HintTextBox.Name = "HintTextBox";
             this.HintTextBox.Size = new System.Drawing.Size(149, 131);
             this.HintTextBox.TabIndex = 10;
+            this.HintTextBox.TabStop = false;
             this.HintTextBox.Text = "To stop\r\njust press\r\n\"Target-Key\"\r\n    Again!";
             this.HintTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -234,6 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.LinkLabelGitHub);
             this.Controls.Add(this.CreatorLinkLable);
