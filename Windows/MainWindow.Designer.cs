@@ -43,15 +43,16 @@
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
             this.CreatorLinkLable = new System.Windows.Forms.LinkLabel();
-            this.LinkLabelGitHub = new System.Windows.Forms.Label();
+            this.GitHub = new System.Windows.Forms.PictureBox();
             this.StatusBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GitHub)).BeginInit();
             this.SuspendLayout();
             // 
             // DelayLabel
             // 
             this.DelayLabel.AutoSize = true;
             this.DelayLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DelayLabel.Location = new System.Drawing.Point(12, 162);
+            this.DelayLabel.Location = new System.Drawing.Point(12, 78);
             this.DelayLabel.Name = "DelayLabel";
             this.DelayLabel.Size = new System.Drawing.Size(123, 30);
             this.DelayLabel.TabIndex = 0;
@@ -60,7 +61,7 @@
             // DelayTextBox
             // 
             this.DelayTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.DelayTextBox.Location = new System.Drawing.Point(204, 159);
+            this.DelayTextBox.Location = new System.Drawing.Point(204, 75);
             this.DelayTextBox.Name = "DelayTextBox";
             this.DelayTextBox.Size = new System.Drawing.Size(139, 35);
             this.DelayTextBox.TabIndex = 3;
@@ -71,7 +72,7 @@
             // 
             this.AmountClicksLablel.AutoSize = true;
             this.AmountClicksLablel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AmountClicksLablel.Location = new System.Drawing.Point(12, 126);
+            this.AmountClicksLablel.Location = new System.Drawing.Point(12, 42);
             this.AmountClicksLablel.Name = "AmountClicksLablel";
             this.AmountClicksLablel.Size = new System.Drawing.Size(186, 30);
             this.AmountClicksLablel.TabIndex = 2;
@@ -80,7 +81,7 @@
             // AmountTextBox
             // 
             this.AmountTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AmountTextBox.Location = new System.Drawing.Point(204, 121);
+            this.AmountTextBox.Location = new System.Drawing.Point(204, 37);
             this.AmountTextBox.Name = "AmountTextBox";
             this.AmountTextBox.Size = new System.Drawing.Size(139, 35);
             this.AmountTextBox.TabIndex = 1;
@@ -91,7 +92,7 @@
             // 
             this.InfinityCheckBox.AutoSize = true;
             this.InfinityCheckBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.InfinityCheckBox.Location = new System.Drawing.Point(204, 101);
+            this.InfinityCheckBox.Location = new System.Drawing.Point(204, 17);
             this.InfinityCheckBox.Name = "InfinityCheckBox";
             this.InfinityCheckBox.Size = new System.Drawing.Size(15, 14);
             this.InfinityCheckBox.TabIndex = 2;
@@ -103,7 +104,7 @@
             // 
             this.KeyLabel.AutoSize = true;
             this.KeyLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.KeyLabel.Location = new System.Drawing.Point(390, 106);
+            this.KeyLabel.Location = new System.Drawing.Point(390, 22);
             this.KeyLabel.Name = "KeyLabel";
             this.KeyLabel.Size = new System.Drawing.Size(103, 30);
             this.KeyLabel.TabIndex = 5;
@@ -113,7 +114,7 @@
             // 
             this.KeyTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.KeyTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.KeyTextBox.Location = new System.Drawing.Point(511, 106);
+            this.KeyTextBox.Location = new System.Drawing.Point(511, 22);
             this.KeyTextBox.MaxLength = 1;
             this.KeyTextBox.Name = "KeyTextBox";
             this.KeyTextBox.ReadOnly = true;
@@ -132,7 +133,7 @@
             // 
             this.KeyWillPressLabel.AutoSize = true;
             this.KeyWillPressLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.KeyWillPressLabel.Location = new System.Drawing.Point(390, 151);
+            this.KeyWillPressLabel.Location = new System.Drawing.Point(390, 67);
             this.KeyWillPressLabel.Name = "KeyWillPressLabel";
             this.KeyWillPressLabel.Size = new System.Drawing.Size(117, 30);
             this.KeyWillPressLabel.TabIndex = 7;
@@ -142,7 +143,7 @@
             // 
             this.KeyWillPressTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.KeyWillPressTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.KeyWillPressTextBox.Location = new System.Drawing.Point(511, 151);
+            this.KeyWillPressTextBox.Location = new System.Drawing.Point(511, 67);
             this.KeyWillPressTextBox.MaxLength = 1;
             this.KeyWillPressTextBox.Name = "KeyWillPressTextBox";
             this.KeyWillPressTextBox.ReadOnly = true;
@@ -159,7 +160,7 @@
             // 
             this.EndlessModeLabel.AutoSize = true;
             this.EndlessModeLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.EndlessModeLabel.Location = new System.Drawing.Point(12, 93);
+            this.EndlessModeLabel.Location = new System.Drawing.Point(12, 9);
             this.EndlessModeLabel.Name = "EndlessModeLabel";
             this.EndlessModeLabel.Size = new System.Drawing.Size(153, 30);
             this.EndlessModeLabel.TabIndex = 8;
@@ -169,59 +170,67 @@
             // 
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusBarLabel});
-            this.StatusBar.Location = new System.Drawing.Point(0, 294);
+            this.StatusBar.Location = new System.Drawing.Point(0, 174);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(672, 35);
+            this.StatusBar.Size = new System.Drawing.Size(672, 39);
+            this.StatusBar.SizingGrip = false;
             this.StatusBar.TabIndex = 9;
             // 
             // StatusBarLabel
             // 
+            this.StatusBarLabel.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Top;
+            this.StatusBarLabel.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.StatusBarLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.StatusBarLabel.Name = "StatusBarLabel";
-            this.StatusBarLabel.Size = new System.Drawing.Size(194, 30);
+            this.StatusBarLabel.Padding = new System.Windows.Forms.Padding(480, 0, 0, 0);
+            this.StatusBarLabel.Size = new System.Drawing.Size(678, 34);
             this.StatusBarLabel.Text = "Waiting for start...";
             // 
             // HintTextBox
             // 
             this.HintTextBox.Enabled = false;
             this.HintTextBox.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.HintTextBox.Location = new System.Drawing.Point(12, 235);
+            this.HintTextBox.Location = new System.Drawing.Point(12, 123);
             this.HintTextBox.Name = "HintTextBox";
-            this.HintTextBox.Size = new System.Drawing.Size(407, 35);
+            this.HintTextBox.Size = new System.Drawing.Size(389, 35);
             this.HintTextBox.TabIndex = 10;
             this.HintTextBox.TabStop = false;
-            this.HintTextBox.Text = "To stop\r\n just press\r\n \"Target-Key\" Again!";
+            this.HintTextBox.Text = "To stop just press \"Target-Key\" Again!";
             this.HintTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // CreatorLinkLable
             // 
             this.CreatorLinkLable.AutoSize = true;
-            this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 27.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 21.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.CreatorLinkLable.LinkColor = System.Drawing.Color.Black;
-            this.CreatorLinkLable.Location = new System.Drawing.Point(477, 220);
+            this.CreatorLinkLable.Location = new System.Drawing.Point(432, 118);
             this.CreatorLinkLable.Name = "CreatorLinkLable";
-            this.CreatorLinkLable.Size = new System.Drawing.Size(181, 50);
+            this.CreatorLinkLable.Size = new System.Drawing.Size(142, 40);
             this.CreatorLinkLable.TabIndex = 12;
             this.CreatorLinkLable.TabStop = true;
             this.CreatorLinkLable.Text = "By Holan";
             this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCreator_LinkClicked);
             // 
-            // LinkLabelGitHub
+            // GitHub
             // 
-            this.LinkLabelGitHub.Image = ((System.Drawing.Image)(resources.GetObject("LinkLabelGitHub.Image")));
-            this.LinkLabelGitHub.Location = new System.Drawing.Point(308, 9);
-            this.LinkLabelGitHub.Name = "LinkLabelGitHub";
-            this.LinkLabelGitHub.Size = new System.Drawing.Size(64, 64);
-            this.LinkLabelGitHub.TabIndex = 13;
-            this.LinkLabelGitHub.Click += new System.EventHandler(this.LinkLabelGitHub_Click);
+            this.GitHub.Image = ((System.Drawing.Image)(resources.GetObject("GitHub.Image")));
+            this.GitHub.InitialImage = null;
+            this.GitHub.Location = new System.Drawing.Point(580, 118);
+            this.GitHub.Name = "GitHub";
+            this.GitHub.Size = new System.Drawing.Size(46, 46);
+            this.GitHub.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.GitHub.TabIndex = 14;
+            this.GitHub.TabStop = false;
+            this.GitHub.WaitOnLoad = true;
+            this.GitHub.Click += new System.EventHandler(this.GitHub_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(672, 329);
-            this.Controls.Add(this.LinkLabelGitHub);
+            this.ClientSize = new System.Drawing.Size(672, 213);
+            this.Controls.Add(this.GitHub);
             this.Controls.Add(this.CreatorLinkLable);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
@@ -235,6 +244,7 @@
             this.Controls.Add(this.AmountClicksLablel);
             this.Controls.Add(this.DelayTextBox);
             this.Controls.Add(this.DelayLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -243,6 +253,7 @@
             this.Click += new System.EventHandler(this.MainWindow_Click);
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GitHub)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,6 +275,6 @@
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;
         private LinkLabel CreatorLinkLable;
-        private Label LinkLabelGitHub;
+        private PictureBox GitHub;
     }
 }

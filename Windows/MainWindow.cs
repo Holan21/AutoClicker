@@ -172,5 +172,6 @@ namespace AutoClicker.Windows
         private void MainWindow_Click(object sender, EventArgs e)
             => ActiveControl = null;
 
+        private void GitHub_Click(object sender, EventArgs e) => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
     }
 }
