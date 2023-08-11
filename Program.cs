@@ -1,7 +1,9 @@
 using AutoClicker.Services.Clicker;
+using AutoClicker.Services.ConfigController;
 using AutoClicker.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 namespace AutoClicker
 {
 
@@ -20,7 +22,8 @@ namespace AutoClicker
             .ConfigureServices((context, services) =>
             {
                 services.AddTransient<MainWindow>();
-                services.AddSingleton<IClicker, Clicker>();
+                services.AddTransient<IClicker, Clicker>();
+                services.AddTransient<IConfigController, ConfigController>();
             });
     }
 }
