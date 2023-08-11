@@ -1,0 +1,10 @@
+﻿{
+
+  "keystart": 90,
+  "keywillpress": 256,
+  "amountClicks": 10000,
+  "delayMs": 10,
+  "infinnityClicks": true,
+  "linkRepo": "https://github.com/Holan21/AutoClicker",
+  "linkCreator": "https://github.com/Holan21"
+}
