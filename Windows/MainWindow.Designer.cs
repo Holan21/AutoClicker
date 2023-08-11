@@ -38,7 +38,7 @@
             this.KeyTextBox = new System.Windows.Forms.TextBox();
             this.KeyWillPressLabel = new System.Windows.Forms.Label();
             this.KeyWillPressTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.EndlessModeLabel = new System.Windows.Forms.Label();
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.StatusBarLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.HintTextBox = new System.Windows.Forms.TextBox();
@@ -156,15 +156,15 @@
             this.KeyWillPressTextBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyWillBePressTextBox_KeyUp);
             this.KeyWillPressTextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KeyWillBePressTextBox_MouseUp);
             // 
-            // label1
+            // EndlessModeLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(78, 122);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(153, 30);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Endless mode:";
+            this.EndlessModeLabel.AutoSize = true;
+            this.EndlessModeLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EndlessModeLabel.Location = new System.Drawing.Point(78, 122);
+            this.EndlessModeLabel.Name = "EndlessModeLabel";
+            this.EndlessModeLabel.Size = new System.Drawing.Size(153, 30);
+            this.EndlessModeLabel.TabIndex = 8;
+            this.EndlessModeLabel.Text = "Endless mode:";
             // 
             // StatusBar
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.LinkLabelRepo);
             this.Controls.Add(this.HintTextBox);
             this.Controls.Add(this.StatusBar);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.EndlessModeLabel);
             this.Controls.Add(this.KeyWillPressTextBox);
             this.Controls.Add(this.KeyWillPressLabel);
             this.Controls.Add(this.KeyTextBox);
@@ -256,6 +256,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auto-Clicker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
+            this.Click += new System.EventHandler(this.MainWindow_Click);
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
             this.ResumeLayout(false);
@@ -274,7 +275,7 @@
         private TextBox KeyTextBox;
         private Label KeyWillPressLabel;
         private TextBox KeyWillPressTextBox;
-        private Label label1;
+        private Label EndlessModeLabel;
         private StatusStrip StatusBar;
         private ToolStripStatusLabel StatusBarLabel;
         private TextBox HintTextBox;

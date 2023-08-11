@@ -4,7 +4,6 @@ using AutoClicker.Services.Clicker;
 using AutoClicker.Services.ConfigController;
 using Gma.System.MouseKeyHook;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
 namespace AutoClicker.Windows
@@ -68,7 +67,6 @@ namespace AutoClicker.Windows
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
                 && !HintTextBox.Focused
-                && !InfinityCheckBox.Focused
                 && canStart)
                 ChangeStatusClicker();
         }
@@ -79,7 +77,6 @@ namespace AutoClicker.Windows
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
-                && !InfinityCheckBox.Focused
                 && !HintTextBox.Focused
                 && canStart)
                 ChangeStatusClicker();
@@ -169,27 +166,17 @@ namespace AutoClicker.Windows
             _startClickerThread = false;
         }
 
-        private void AmountTextBox_TextChanged(object sender, EventArgs e)
-        {
-            config.amoutClicks = int.Parse(AmountTextBox.Text);
-        }
+        private void AmountTextBox_TextChanged(object sender, EventArgs e) => config.amoutClicks = int.Parse(AmountTextBox.Text);
 
-        private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
-        }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
-        }
+        private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
 
-        private void LinkLabelGitHub_Click(object sender, EventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(config.LinkGitHub) { UseShellExecute = true });
-        }
 
-        [DllImport("User32.dll")]
-        private static extern bool SetForegroundWindow(IntPtr hHnd);
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
+
+        private void LinkLabelGitHub_Click(object sender, EventArgs e) => Process.Start(new ProcessStartInfo(config.LinkGitHub) { UseShellExecute = true });
+
+        private void MainWindow_Click(object sender, EventArgs e) => ActiveControl = null;
+
     }
 }
