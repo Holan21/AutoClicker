@@ -163,7 +163,7 @@ namespace AutoClicker.Windows
         private void AmountTextBox_TextChanged(object sender, EventArgs e)
             => config.AmoutClicks = int.Parse(AmountTextBox.Text);
 
-        private void linkCreator_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkCreator_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
             => Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
 
         private void LinkLabelGitHub_Click(object sender, EventArgs e)
@@ -172,6 +172,10 @@ namespace AutoClicker.Windows
         private void MainWindow_Click(object sender, EventArgs e)
             => ActiveControl = null;
 
-        private void GitHub_Click(object sender, EventArgs e) => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
+        private void GitHub_Click(object sender, EventArgs e)
+            => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
+
+        private void DesignerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+            => Process.Start(new ProcessStartInfo(config.LinkDesigner) { UseShellExecute = true });
     }
 }

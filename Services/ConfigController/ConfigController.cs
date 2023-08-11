@@ -10,9 +10,8 @@ namespace AutoClicker.Services.ConfigController
         {
             if (File.Exists(_nameConfig))
             {
-                using (var stream = File.OpenRead(_nameConfig))
-                    return JsonSerializer.Deserialize<ConfigApp>(stream);
-
+                using var stream = File.OpenRead(_nameConfig);
+                return JsonSerializer.Deserialize<ConfigApp>(stream);
             }
             else
                 return SetConfig(new ConfigApp());

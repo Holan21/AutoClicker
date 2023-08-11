@@ -44,6 +44,7 @@
             this.HintTextBox = new System.Windows.Forms.TextBox();
             this.CreatorLinkLable = new System.Windows.Forms.LinkLabel();
             this.GitHub = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.StatusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GitHub)).BeginInit();
             this.SuspendLayout();
@@ -201,16 +202,16 @@
             // CreatorLinkLable
             // 
             this.CreatorLinkLable.AutoSize = true;
-            this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 21.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.CreatorLinkLable.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
             this.CreatorLinkLable.LinkColor = System.Drawing.Color.Black;
-            this.CreatorLinkLable.Location = new System.Drawing.Point(432, 118);
+            this.CreatorLinkLable.Location = new System.Drawing.Point(414, 118);
             this.CreatorLinkLable.Name = "CreatorLinkLable";
-            this.CreatorLinkLable.Size = new System.Drawing.Size(142, 40);
+            this.CreatorLinkLable.Size = new System.Drawing.Size(93, 25);
             this.CreatorLinkLable.TabIndex = 12;
             this.CreatorLinkLable.TabStop = true;
             this.CreatorLinkLable.Text = "By Holan";
-            this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCreator_LinkClicked);
+            this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkCreator_LinkClicked);
             // 
             // GitHub
             // 
@@ -225,11 +226,26 @@
             this.GitHub.WaitOnLoad = true;
             this.GitHub.Click += new System.EventHandler(this.GitHub_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI", 14.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
+            this.linkLabel1.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel1.Location = new System.Drawing.Point(414, 149);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(112, 25);
+            this.linkLabel1.TabIndex = 16;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "and Masart";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.DesignerLink_LinkClicked);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 213);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.GitHub);
             this.Controls.Add(this.CreatorLinkLable);
             this.Controls.Add(this.HintTextBox);
@@ -245,6 +261,7 @@
             this.Controls.Add(this.DelayTextBox);
             this.Controls.Add(this.DelayLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(800, 500);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -276,5 +293,6 @@
         private TextBox HintTextBox;
         private LinkLabel CreatorLinkLable;
         private PictureBox GitHub;
+        private LinkLabel linkLabel1;
     }
 }
