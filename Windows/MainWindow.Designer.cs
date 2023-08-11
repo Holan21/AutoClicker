@@ -220,7 +220,7 @@
             this.CreatorLinkLable.TabIndex = 12;
             this.CreatorLinkLable.TabStop = true;
             this.CreatorLinkLable.Text = "By Holan";
-            this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.CreatorLinkLable.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkCreator_LinkClicked);
             // 
             // LinkLabelGitHub
             // 

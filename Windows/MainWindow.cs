@@ -61,27 +61,22 @@ namespace AutoClicker.Windows
 
         private void GlobalHook_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (e.KeyValue == config.keyStart
-                && !KeyTextBox.Focused
-                && !KeyWillPressTextBox.Focused
-                && !AmountTextBox.Focused
-                && !DelayTextBox.Focused
-                && !HintTextBox.Focused
-                && canStart)
+            if (e.KeyValue == config.keyStart && AllTextBoxHaventFocus() && canStart)
                 ChangeStatusClicker();
         }
         private void GlobalHook_MouseDown(object? sender, MouseEventArgs e)
         {
-            if ((int)e.Button == config.keyStart
-                && !KeyTextBox.Focused
+            if ((int)e.Button == config.keyStart && AllTextBoxHaventFocus() && canStart)
+                ChangeStatusClicker();
+        }
+        private bool AllTextBoxHaventFocus()
+        {
+            return !KeyTextBox.Focused
                 && !KeyWillPressTextBox.Focused
                 && !AmountTextBox.Focused
                 && !DelayTextBox.Focused
-                && !HintTextBox.Focused
-                && canStart)
-                ChangeStatusClicker();
+                && !HintTextBox.Focused;
         }
-
         private void ChangeStatusClicker()
         {
             if (config.keyStart == config.keyWillPress)
@@ -89,20 +84,29 @@ namespace AutoClicker.Windows
                 canStart = false;
                 MessageBox.Show("Key for start can't be equel to key will press.", "Exception");
 
-                KeyTextBox.Text = "Z";
-                KeyWillPressTextBox.Text = "LBUTTON";
+                ToDefualtButtonsBind();
 
-                config.keyStart = (int)KeysAndMouseButtons.Z;
-                config.keyWillPress = (int)KeysAndMouseButtons.LBUTTON;
-                return;
+                canStart = true;
             }
-
-            _startClickerThread = !_startClickerThread;
-
-            if (_startClickerThread)
-                StatusBarLabel.Text = "Process is going...";
             else
-                StatusBarLabel.Text = "Completed succesfully!";
+            {
+                _startClickerThread = !_startClickerThread;
+
+                if (_startClickerThread)
+                    StatusBarLabel.Text = "Process is going...";
+                else
+                    StatusBarLabel.Text = "Completed succesfully!";
+            }
+        }
+
+        private void ToDefualtButtonsBind()
+        {
+            ConfigApp configApp = new();
+            KeyTextBox.Text = ((KeysAndMouseButtons)configApp.keyStart).ToString();
+            KeyWillPressTextBox.Text = ((KeysAndMouseButtons)configApp.keyWillPress).ToString(); ;
+
+            config.keyStart = configApp.keyStart;
+            config.keyWillPress = configApp.keyWillPress;
         }
 
         private void KeyTextBox_KeyUp(object sender, KeyEventArgs e)
@@ -130,9 +134,8 @@ namespace AutoClicker.Windows
         }
 
         private void SelectAllTextBox(object sender, EventArgs e)
-        {
-            ((TextBox)sender).SelectAll();
-        }
+           => ((TextBox)sender).SelectAll();
+
 
         private void OnlyNumber_TextChange(object sender, EventArgs e)
         {
@@ -147,36 +150,32 @@ namespace AutoClicker.Windows
 
         private void InfinityCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (InfinityCheckBox.Checked)
-            {
-                AmountTextBox.Enabled = false;
-                config.infinnityClicks = true;
-            }
-            else
-            {
-                AmountTextBox.Enabled = true;
-                config.infinnityClicks = false;
-            }
+            AmountTextBox.Enabled = !InfinityCheckBox.Checked;
+            config.infinnityClicks = InfinityCheckBox.Checked;
         }
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             _config.SetConfig(config);
             _aliveClickerThread = false;
-            _startClickerThread = false;
         }
 
-        private void AmountTextBox_TextChanged(object sender, EventArgs e) => config.amoutClicks = int.Parse(AmountTextBox.Text);
+        private void AmountTextBox_TextChanged(object sender, EventArgs e)
+            => config.amoutClicks = int.Parse(AmountTextBox.Text);
 
 
-        private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
+        private void LinkLabelRepo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+            => Process.Start(new ProcessStartInfo(config.LinkRepo) { UseShellExecute = true });
 
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) => Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
+        private void linkCreator_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+            => Process.Start(new ProcessStartInfo(config.LinkCreator) { UseShellExecute = true });
 
-        private void LinkLabelGitHub_Click(object sender, EventArgs e) => Process.Start(new ProcessStartInfo(config.LinkGitHub) { UseShellExecute = true });
+        private void LinkLabelGitHub_Click(object sender, EventArgs e)
+            => Process.Start(new ProcessStartInfo(config.LinkGitHub) { UseShellExecute = true });
 
-        private void MainWindow_Click(object sender, EventArgs e) => ActiveControl = null;
+        private void MainWindow_Click(object sender, EventArgs e)
+            => ActiveControl = null;
 
     }
 }
