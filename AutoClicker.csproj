@@ -2,12 +2,21 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.22621.0</TargetFramework>
+    <TargetFramework>net7.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7b46fbaa-3aab-48cd-8213-ead052c8dec1</UserSecretsId>
+    <ApplicationIcon>3371522.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="3371522.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="3371522.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Arphox.MouseManipulator" Version="1.3.0" />
